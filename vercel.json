@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "groceriesitems.py",
+      "src": "grocerieslistitems.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "groceriesitems.py"
+      "dest": "grocerieslistitems.py"
     }
   ]
 }
