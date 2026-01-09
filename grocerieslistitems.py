@@ -10,7 +10,7 @@ from typing import Optional
 
 # Database Setup
 
-sqlalchemy_database_url = "sqlite:///groceries.db"
+sqlalchemy_database_url = "sqlite:///grocerieslist.db"
 engine = create_engine(
     sqlalchemy_database_url, connect_args={"check_same_thread": False}
 )
@@ -19,7 +19,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 class DBGroceryItem(Base):
-    __tablename__ = "groceries"
+    __tablename__ = "grocerieslist"
     
     Id = Column(String, primary_key=True, index=True)
     Item = Column(String, index=True)
@@ -56,7 +56,7 @@ app = FastAPI()
 
 @app.get("/")
 async def default():
-    return {"message": "Welcome to the Groceries API."}
+    return {"message": "Welcome to the groceries list API."}
 
 @app.get("/getitems", response_model=List[GroceryItem])
 async def pull_items(db: Session = Depends(get_db)):
